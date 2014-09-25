@@ -783,7 +783,7 @@ playback_command_free (PlaybackCommand *command)
   command->data = NULL;
 
   g_cond_clear (command->cond);
-  g_mutex_free (command->lock);
+  g_mutex_clear (command->lock);
   g_free (command);
 }
 

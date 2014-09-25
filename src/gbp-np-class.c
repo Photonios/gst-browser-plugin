@@ -782,7 +782,7 @@ playback_command_free (PlaybackCommand *command)
     npp_gbp_data_free (command->data);
   command->data = NULL;
 
-  g_cond_free (command->cond);
+  g_cond_clear (command->cond);
   g_mutex_free (command->lock);
   g_free (command);
 }

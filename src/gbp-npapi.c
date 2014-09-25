@@ -534,12 +534,12 @@ NP_Shutdown ()
 
   gbp_np_class_free ();
 
-  g_static_mutex_lock (&pending_invoke_data_lock);
+  g_mutex_lock (&pending_invoke_data_lock);
   for (walk = pending_invoke_data; walk != NULL; walk = walk->next)
     invoke_data_free ((InvokeData *) walk->data, FALSE);
   g_slist_free (pending_invoke_data);
   pending_invoke_data = NULL;
-  g_static_mutex_unlock (&pending_invoke_data_lock);
+  g_mutex_unlock (&pending_invoke_data_lock);
 
   return NPERR_NO_ERROR;
 }
@@ -597,9 +597,9 @@ invoke_data_new (NPP instance, NPObject *object, int n_args)
   invoke_data->args = NPN_MemAlloc (sizeof (NPVariant) * n_args);
   invoke_data->n_args = n_args;
 
-  g_static_mutex_lock (&pending_invoke_data_lock);
+  g_mutex_lock (&pending_invoke_data_lock);
   pending_invoke_data = g_slist_append (pending_invoke_data, invoke_data);
-  g_static_mutex_unlock (&pending_invoke_data_lock);
+  g_mutex_unlock (&pending_invoke_data_lock);
 
   return invoke_data;
 }
@@ -621,9 +621,9 @@ invoke_data_free (InvokeData *invoke_data, gboolean remove_from_pending_slist)
   NPN_MemFree (invoke_data->args);
 
   if (remove_from_pending_slist) {
-    g_static_mutex_lock (&pending_invoke_data_lock);
+    g_mutex_lock (&pending_invoke_data_lock);
     pending_invoke_data = g_slist_remove (pending_invoke_data, invoke_data);
-    g_static_mutex_unlock (&pending_invoke_data_lock);
+    g_mutex_unlock (&pending_invoke_data_lock);
   }
 
   NPN_MemFree (invoke_data);

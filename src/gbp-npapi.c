@@ -209,7 +209,7 @@ NPP_Destroy (NPP instance, NPSavedData **saved_data)
 {
   if (!instance)
     return NPERR_INVALID_INSTANCE_ERROR;
-
+	{
   NPPGbpData *data = (NPPGbpData *) instance->pdata;
 
 #ifdef XP_MACOSX
@@ -232,6 +232,7 @@ NPP_Destroy (NPP instance, NPSavedData **saved_data)
   npp_gbp_data_free (data);
 
   return NPERR_NO_ERROR;
+  }
 }
 
 NPError
@@ -240,17 +241,19 @@ NPP_SetWindow (NPP instance, NPWindow *window)
   if (!instance)
     return NPERR_INVALID_INSTANCE_ERROR;
 
-  NPPGbpData *data = (NPPGbpData *) instance->pdata;
+  {
+	  NPPGbpData *data = (NPPGbpData *)instance->pdata;
 
 #ifdef XP_MACOSX
-  if (data->drawing_model != CORE_ANIMATION)
-    attach_nsview_to_window (data->clippingView, window, data->user_agent,
-        data->drawing_model == CORE_GRAPHICS);
+	  if (data->drawing_model != CORE_ANIMATION)
+		  attach_nsview_to_window (data->clippingView, window, data->user_agent,
+		  data->drawing_model == CORE_GRAPHICS);
 #else
-  g_object_set (data->player, "xid", GPOINTER_TO_INT (window->window), NULL);
+	  g_object_set(data->player,"xid",GPOINTER_TO_INT(window->window),NULL);
 #endif
 
-  return NPERR_NO_ERROR;
+	  return NPERR_NO_ERROR;
+  }
 }
 
 #ifdef XP_MACOSX

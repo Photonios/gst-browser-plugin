@@ -492,14 +492,12 @@ NP_Initialize (NPNetscapeFuncs *mozilla_vtable, NPPluginFuncs *plugin_vtable)
   gst_init (NULL, NULL);
   registry = gst_registry_get  ();
 
-  gst_registry_add_path (registry, library_path);
   gst_registry_scan_path (registry, library_path);
 
 #ifdef XP_MACOSX
   gst_path[0] = '\0';
   strcat (gst_path, library_path);
   strcat (gst_path, "/../Frameworks/Plugins/");
-  gst_registry_add_path (registry, gst_path);
   gst_registry_scan_path (registry, gst_path);
 #endif
 

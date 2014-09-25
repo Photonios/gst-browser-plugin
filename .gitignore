@@ -1,8 +1,8 @@
-*.swp
-*.o
-.deps
+bin/
+obj/
+proj/
+*.sln
+*.sdf
+*.opensdf
+*.suo
 Makefile
-**/Makefile
-Makefile.in
-**/Makefile.in
-**/gitisbroken

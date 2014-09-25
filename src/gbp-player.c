@@ -440,7 +440,7 @@ gbp_player_get_duration (GbpPlayer *player)
   if (!player->priv->have_pipeline)
     return GST_CLOCK_TIME_NONE;
 
-  if (!gst_element_query_duration (GST_ELEMENT (player->priv->pipeline), &format, &duration))
+  if (!gst_element_query_duration (GST_ELEMENT (player->priv->pipeline), format, &duration))
     return GST_CLOCK_TIME_NONE;
 
   return (GstClockTime) duration;
@@ -457,7 +457,7 @@ gbp_player_get_position (GbpPlayer *player)
   if (!player->priv->have_pipeline)
     return GST_CLOCK_TIME_NONE;
 
-  if (!gst_element_query_position (GST_ELEMENT (player->priv->pipeline), &format, &position))
+  if (!gst_element_query_position (GST_ELEMENT (player->priv->pipeline), format, &position))
     return GST_CLOCK_TIME_NONE;
 
   return (GstClockTime) position;

@@ -21,7 +21,7 @@
  */
 
 #include <string.h>
-#include <gst/interfaces/xoverlay.h>
+#include <gst/video/videooverlay.h>
 #include "gbp-player.h"
 #include "gbp-marshal.h"
 
@@ -602,8 +602,7 @@ on_bus_element_cb (GstBus *bus, GstMessage *message,
   if (!strcmp (structure_name, "have-ns-view") ||
       !strcmp (structure_name, "have-ca-layer")) {
     if (player->priv->xid != 0) {
-      gst_x_overlay_set_xwindow_id (GST_X_OVERLAY (GST_ELEMENT (message->src)),
-          (gulong) player->priv->xid);
+      gst_video_overlay_set_window_handle(GST_VIDEO_OVERLAY(sink), player->priv->xid);
     }
     return;
   }
@@ -611,6 +610,6 @@ on_bus_element_cb (GstBus *bus, GstMessage *message,
 
   if (!strcmp (structure_name, "prepare-xwindow-id")) {
     sink = GST_ELEMENT (message->src);
-    gst_x_overlay_set_xwindow_id (GST_X_OVERLAY (sink), player->priv->xid);
+	gst_video_overlay_set_window_handle(GST_VIDEO_OVERLAY(sink), player->priv->xid);
   }
 }

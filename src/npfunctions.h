@@ -255,7 +255,7 @@ NPError OSCALL NP_GetPluginData(NPPluginData * pPluginData);
 #endif
 NPError OSCALL NP_GetEntryPoints(NPPluginFuncs* pFuncs);
 NPError OSCALL NP_Initialize(NPNetscapeFuncs* bFuncs);
-NPError OSCALL NP_Shutdown();
+//NPError OSCALL NP_Shutdown();
 char*          NP_GetMIMEDescription();
 #ifdef __cplusplus
 }

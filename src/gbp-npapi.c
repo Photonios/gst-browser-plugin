@@ -520,14 +520,14 @@ NP_GetEntryPoints (NPPluginFuncs *plugin_vtable)
     return fill_plugin_vtable (plugin_vtable);
 }
 
-NPError
+NPError OSCALL
 NP_Shutdown ()
 {
     GSList *walk;
 
     GST_INFO ("shutdown");
 
-    gbp_np_class_free ();
+    gbp_np_class_free (); 
 
     g_mutex_lock (&pending_invoke_data_lock);
     for (walk = pending_invoke_data; walk != NULL; walk = walk->next)

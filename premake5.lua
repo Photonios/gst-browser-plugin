@@ -55,5 +55,6 @@ solution "gst-browser-plugin"
 				"_SCL_SECURE_NO_WARNINGS",
 				"_CRT_SECURE_NO_WARNINGS",
 				"_WIN32_WINNT=0x0501",
-				"XP_WIN"
+				"XP_WIN",
+				"_WINDOWS"
 			}

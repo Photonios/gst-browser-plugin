@@ -118,75 +118,75 @@ typedef NPError      (*NPN_SetValueForURLPtr)(NPP npp, NPNURLVariable variable, 
 typedef NPError      (*NPN_GetAuthenticationInfoPtr)(NPP npp, const char *protocol, const char *host, int32_t port, const char *scheme, const char *realm, char **username, uint32_t *ulen, char **password, uint32_t *plen);
 
 typedef struct _NPPluginFuncs {
-  uint16_t size;
-  uint16_t version;
-  NPP_NewProcPtr newp;
-  NPP_DestroyProcPtr destroy;
-  NPP_SetWindowProcPtr setwindow;
-  NPP_NewStreamProcPtr newstream;
-  NPP_DestroyStreamProcPtr destroystream;
-  NPP_StreamAsFileProcPtr asfile;
-  NPP_WriteReadyProcPtr writeready;
-  NPP_WriteProcPtr write;
-  NPP_PrintProcPtr print;
-  NPP_HandleEventProcPtr event;
-  NPP_URLNotifyProcPtr urlnotify;
-  void* javaClass;
-  NPP_GetValueProcPtr getvalue;
-  NPP_SetValueProcPtr setvalue;
+    uint16_t size;
+    uint16_t version;
+    NPP_NewProcPtr newp;
+    NPP_DestroyProcPtr destroy;
+    NPP_SetWindowProcPtr setwindow;
+    NPP_NewStreamProcPtr newstream;
+    NPP_DestroyStreamProcPtr destroystream;
+    NPP_StreamAsFileProcPtr asfile;
+    NPP_WriteReadyProcPtr writeready;
+    NPP_WriteProcPtr write;
+    NPP_PrintProcPtr print;
+    NPP_HandleEventProcPtr event;
+    NPP_URLNotifyProcPtr urlnotify;
+    void* javaClass;
+    NPP_GetValueProcPtr getvalue;
+    NPP_SetValueProcPtr setvalue;
 } NPPluginFuncs;
 
 typedef struct _NPNetscapeFuncs {
-  uint16_t size;
-  uint16_t version;
-  NPN_GetURLProcPtr geturl;
-  NPN_PostURLProcPtr posturl;
-  NPN_RequestReadProcPtr requestread;
-  NPN_NewStreamProcPtr newstream;
-  NPN_WriteProcPtr write;
-  NPN_DestroyStreamProcPtr destroystream;
-  NPN_StatusProcPtr status;
-  NPN_UserAgentProcPtr uagent;
-  NPN_MemAllocProcPtr memalloc;
-  NPN_MemFreeProcPtr memfree;
-  NPN_MemFlushProcPtr memflush;
-  NPN_ReloadPluginsProcPtr reloadplugins;
-  NPN_GetJavaEnvProcPtr getJavaEnv;
-  NPN_GetJavaPeerProcPtr getJavaPeer;
-  NPN_GetURLNotifyProcPtr geturlnotify;
-  NPN_PostURLNotifyProcPtr posturlnotify;
-  NPN_GetValueProcPtr getvalue;
-  NPN_SetValueProcPtr setvalue;
-  NPN_InvalidateRectProcPtr invalidaterect;
-  NPN_InvalidateRegionProcPtr invalidateregion;
-  NPN_ForceRedrawProcPtr forceredraw;
-  NPN_GetStringIdentifierProcPtr getstringidentifier;
-  NPN_GetStringIdentifiersProcPtr getstringidentifiers;
-  NPN_GetIntIdentifierProcPtr getintidentifier;
-  NPN_IdentifierIsStringProcPtr identifierisstring;
-  NPN_UTF8FromIdentifierProcPtr utf8fromidentifier;
-  NPN_IntFromIdentifierProcPtr intfromidentifier;
-  NPN_CreateObjectProcPtr createobject;
-  NPN_RetainObjectProcPtr retainobject;
-  NPN_ReleaseObjectProcPtr releaseobject;
-  NPN_InvokeProcPtr invoke;
-  NPN_InvokeDefaultProcPtr invokeDefault;
-  NPN_EvaluateProcPtr evaluate;
-  NPN_GetPropertyProcPtr getproperty;
-  NPN_SetPropertyProcPtr setproperty;
-  NPN_RemovePropertyProcPtr removeproperty;
-  NPN_HasPropertyProcPtr hasproperty;
-  NPN_HasMethodProcPtr hasmethod;
-  NPN_ReleaseVariantValueProcPtr releasevariantvalue;
-  NPN_SetExceptionProcPtr setexception;
-  NPN_PushPopupsEnabledStateProcPtr pushpopupsenabledstate;
-  NPN_PopPopupsEnabledStateProcPtr poppopupsenabledstate;
-  NPN_EnumerateProcPtr enumerate;
-  NPN_PluginThreadAsyncCallProcPtr pluginthreadasynccall;
-  NPN_ConstructProcPtr construct;
-  NPN_GetValueForURLPtr getvalueforurl;
-  NPN_SetValueForURLPtr setvalueforurl;
-  NPN_GetAuthenticationInfoPtr getauthenticationinfo;
+    uint16_t size;
+    uint16_t version;
+    NPN_GetURLProcPtr geturl;
+    NPN_PostURLProcPtr posturl;
+    NPN_RequestReadProcPtr requestread;
+    NPN_NewStreamProcPtr newstream;
+    NPN_WriteProcPtr write;
+    NPN_DestroyStreamProcPtr destroystream;
+    NPN_StatusProcPtr status;
+    NPN_UserAgentProcPtr uagent;
+    NPN_MemAllocProcPtr memalloc;
+    NPN_MemFreeProcPtr memfree;
+    NPN_MemFlushProcPtr memflush;
+    NPN_ReloadPluginsProcPtr reloadplugins;
+    NPN_GetJavaEnvProcPtr getJavaEnv;
+    NPN_GetJavaPeerProcPtr getJavaPeer;
+    NPN_GetURLNotifyProcPtr geturlnotify;
+    NPN_PostURLNotifyProcPtr posturlnotify;
+    NPN_GetValueProcPtr getvalue;
+    NPN_SetValueProcPtr setvalue;
+    NPN_InvalidateRectProcPtr invalidaterect;
+    NPN_InvalidateRegionProcPtr invalidateregion;
+    NPN_ForceRedrawProcPtr forceredraw;
+    NPN_GetStringIdentifierProcPtr getstringidentifier;
+    NPN_GetStringIdentifiersProcPtr getstringidentifiers;
+    NPN_GetIntIdentifierProcPtr getintidentifier;
+    NPN_IdentifierIsStringProcPtr identifierisstring;
+    NPN_UTF8FromIdentifierProcPtr utf8fromidentifier;
+    NPN_IntFromIdentifierProcPtr intfromidentifier;
+    NPN_CreateObjectProcPtr createobject;
+    NPN_RetainObjectProcPtr retainobject;
+    NPN_ReleaseObjectProcPtr releaseobject;
+    NPN_InvokeProcPtr invoke;
+    NPN_InvokeDefaultProcPtr invokeDefault;
+    NPN_EvaluateProcPtr evaluate;
+    NPN_GetPropertyProcPtr getproperty;
+    NPN_SetPropertyProcPtr setproperty;
+    NPN_RemovePropertyProcPtr removeproperty;
+    NPN_HasPropertyProcPtr hasproperty;
+    NPN_HasMethodProcPtr hasmethod;
+    NPN_ReleaseVariantValueProcPtr releasevariantvalue;
+    NPN_SetExceptionProcPtr setexception;
+    NPN_PushPopupsEnabledStateProcPtr pushpopupsenabledstate;
+    NPN_PopPopupsEnabledStateProcPtr poppopupsenabledstate;
+    NPN_EnumerateProcPtr enumerate;
+    NPN_PluginThreadAsyncCallProcPtr pluginthreadasynccall;
+    NPN_ConstructProcPtr construct;
+    NPN_GetValueForURLPtr getvalueforurl;
+    NPN_SetValueForURLPtr setvalueforurl;
+    NPN_GetAuthenticationInfoPtr getauthenticationinfo;
 } NPNetscapeFuncs;
 
 #ifdef XP_MACOSX
@@ -195,18 +195,18 @@ typedef struct _NPNetscapeFuncs {
  * These can be called to retreive MIME information from the plugin dynamically
  *
  * Note: For compatibility with Quicktime, BPSupportedMIMEtypes is another way
- *       to get mime info from the plugin only on OSX and may not be supported 
+ *       to get mime info from the plugin only on OSX and may not be supported
  *       in furture version -- use NP_GetMIMEDescription instead
  */
 enum
 {
- kBPSupportedMIMETypesStructVers_1    = 1
+    kBPSupportedMIMETypesStructVers_1    = 1
 };
 typedef struct _BPSupportedMIMETypes
 {
- SInt32    structVersion;      /* struct version */
- Handle    typeStrings;        /* STR# formated handle, allocated by plug-in */
- Handle    infoStrings;        /* STR# formated handle, allocated by plug-in */
+    SInt32    structVersion;      /* struct version */
+    Handle    typeStrings;        /* STR# formated handle, allocated by plug-in */
+    Handle    infoStrings;        /* STR# formated handle, allocated by plug-in */
 } BPSupportedMIMETypes;
 OSErr BP_GetSupportedMIMETypes(BPSupportedMIMETypes *mimeInfo, UInt32 flags);
 #define NP_GETMIMEDESCRIPTION_NAME "NP_GetMIMEDescription"
@@ -243,13 +243,13 @@ extern "C" {
 /* plugin meta member functions */
 #if defined(__OS2__)
 typedef struct _NPPluginData {   /* Alternate OS2 Plugin interface */
-  char *pMimeTypes;
-  char *pFileExtents;
-  char *pFileOpenTemplate;
-  char *pProductName;
-  char *pProductDescription;
-  unsigned long dwProductVersionMS;
-  unsigned long dwProductVersionLS;
+    char *pMimeTypes;
+    char *pFileExtents;
+    char *pFileOpenTemplate;
+    char *pProductName;
+    char *pProductDescription;
+    unsigned long dwProductVersionMS;
+    unsigned long dwProductVersionLS;
 } NPPluginData;
 NPError OSCALL NP_GetPluginData(NPPluginData * pPluginData);
 #endif

@@ -39,39 +39,39 @@ G_BEGIN_DECLS
 
 #ifdef XP_MACOSX
 typedef enum {
-  QUICK_DRAW,
-  CORE_GRAPHICS,
-  CORE_ANIMATION
+    QUICK_DRAW,
+    CORE_GRAPHICS,
+    CORE_ANIMATION
 } OSXDrawinModel;
 #endif
 
 typedef struct _NPPGbpData
 {
-  const char *user_agent;
-  GbpPlayer *player;
-  NPObject *errorHandler;
-  NPObject *stateHandler;
+    const char *user_agent;
+    GbpPlayer *player;
+    NPObject *errorHandler;
+    NPObject *stateHandler;
 #ifndef PLAYBACK_THREAD_POOL
-  GThread *playback_thread;
+    GThread *playback_thread;
 #else
-  gint pending_commands;
+    gint pending_commands;
 #endif
-  GAsyncQueue *playback_queue;
-  char *state;
-  gboolean exiting;
-  gboolean quit;
+    GAsyncQueue *playback_queue;
+    char *state;
+    gboolean exiting;
+    gboolean quit;
 #ifdef XP_MACOSX
-  NSView *clippingView;
-  CALayer *layer;
-  OSXDrawinModel drawing_model;
+    NSView *clippingView;
+    CALayer *layer;
+    OSXDrawinModel drawing_model;
 #endif
 } NPPGbpData;
 
 char *NP_GetMIMEDescription();
 #ifndef XP_WIN
-NPError OSCALL NP_Initialize (NPNetscapeFuncs *mozilla_vtable, NPPluginFuncs *plugin_vtable);
+	NPError OSCALL NP_Initialize (NPNetscapeFuncs *mozilla_vtable, NPPluginFuncs *plugin_vtable);
 #else
-NPError OSCALL NP_Initialize (NPNetscapeFuncs *mozilla_vtable);
+	NPError OSCALL NP_Initialize (NPNetscapeFuncs *mozilla_vtable);
 #endif
 NPError OSCALL NP_GetEntryPoints (NPPluginFuncs *plugin_vtable);
 NPError OSCALL NP_Shutdown ();

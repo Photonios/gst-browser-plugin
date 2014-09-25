@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2009 Alessandro Decina
- * 
+ *
  * Authors:
  *   Alessandro Decina <alessandro.d@gmail.com>
  *
@@ -30,15 +30,15 @@ G_BEGIN_DECLS
 
 typedef struct _GbpNPClass
 {
-  NPClass klass;
+    NPClass klass;
 } GbpNPClass;
 
 typedef struct _GbpNPObject
 {
-  NPObject object;
-  NPP instance;
+    NPObject object;
+    NPP instance;
 
-  GThread *playback_thread;
+    GThread *playback_thread;
 } GbpNPObject;
 
 extern GbpNPClass gbp_np_class;

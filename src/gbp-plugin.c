@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2009 Alessandro Decina
- * 
+ *
  * Authors:
  *   Alessandro Decina <alessandro.d@gmail.com>
  *
@@ -30,95 +30,95 @@ char *mime_types_description;
 static void
 invalidate_mime_types_description ()
 {
-  if (mime_types_description != NULL) {
-    g_free (mime_types_description);
-    mime_types_description = NULL;
-  }
+    if (mime_types_description != NULL) {
+        g_free (mime_types_description);
+        mime_types_description = NULL;
+    }
 }
 
 GList *
 gbp_plugin_get_mime_types ()
 {
-  return mime_types;
+    return mime_types;
 }
 
 gboolean
 gbp_plugin_add_mime_type (const char *mime_type)
 {
-  GList *walk, *last = NULL, *tmp;
+    GList *walk, *last = NULL, *tmp;
 
-  g_return_val_if_fail (mime_type != NULL, FALSE);
+    g_return_val_if_fail (mime_type != NULL, FALSE);
 
-  for (walk = mime_types; walk != NULL; walk = walk->next) {
-    if (!strcmp ((const char *) walk->data, mime_type))
-      return FALSE;
+    for (walk = mime_types; walk != NULL; walk = walk->next) {
+        if (!strcmp ((const char *) walk->data, mime_type))
+            return FALSE;
 
-    last = walk;
-  }
+        last = walk;
+    }
 
-  tmp = g_list_append (last, (gchar *) mime_type);
-  if (last == NULL)
-    mime_types = tmp;
+    tmp = g_list_append (last, (gchar *) mime_type);
+    if (last == NULL)
+        mime_types = tmp;
 
-  invalidate_mime_types_description();
+    invalidate_mime_types_description();
 
-  return TRUE;
+    return TRUE;
 }
 
 gboolean
 gbp_plugin_remove_mime_type (const char *mime_type)
 {
-  GList *walk;
+    GList *walk;
 
-  for (walk = mime_types; walk != NULL; walk = walk->next) {
-    if (!strcmp ((const char *) walk->data, mime_type)) {
-      mime_types = g_list_delete_link (mime_types, walk);
-  
-      invalidate_mime_types_description();
+    for (walk = mime_types; walk != NULL; walk = walk->next) {
+        if (!strcmp ((const char *) walk->data, mime_type)) {
+            mime_types = g_list_delete_link (mime_types, walk);
 
-      return TRUE;
+            invalidate_mime_types_description();
+
+            return TRUE;
+        }
     }
-  }
 
-  return FALSE;
+    return FALSE;
 }
 
 void
 gbp_plugin_remove_all_mime_types ()
 {
-  g_list_free (mime_types);
-  mime_types = NULL;
-  invalidate_mime_types_description();
+    g_list_free (mime_types);
+    mime_types = NULL;
+    invalidate_mime_types_description();
 }
 
 char *
 gbp_plugin_get_mime_types_description ()
 {
-  GList *walk;
-  int i;
-  gchar **mimes;
-  guint len;
+    GList *walk;
+    int i;
+    gchar **mimes;
+    guint len;
 
-  if (mime_types_description != NULL)
+    if (mime_types_description != NULL)
+        return mime_types_description;
+
+    if (mime_types == NULL)
+        return NULL;
+
+    mimes = (gchar **) g_new0 (gchar *, g_list_length (mime_types) + 1);
+
+    for (walk = mime_types, i=0 ; walk != NULL; walk = walk->next, ++i)
+        mimes[i] = (gchar *) walk->data;
+    mimes[i] = NULL;
+
+    mime_types_description = g_strjoinv(":", mimes);
+    /* add trailing ';' */
+    len = strlen(mime_types_description);
+    mime_types_description = (gchar *) g_realloc(mime_types_description, len + 2);
+    mime_types_description[len] = ':';
+    mime_types_description[len+1] = '\0';
+
+    g_free (mimes);
+
     return mime_types_description;
-
-  if (mime_types == NULL)
-    return NULL;
-
-  mimes = (gchar **) g_new0 (gchar *, g_list_length (mime_types) + 1);
-
-  for (walk = mime_types, i=0 ; walk != NULL; walk = walk->next, ++i)
-    mimes[i] = (gchar *) walk->data;
-  mimes[i] = NULL;
-
-  mime_types_description = g_strjoinv(":", mimes);
-  /* add trailing ';' */
-  len = strlen(mime_types_description);
-  mime_types_description = (gchar *) g_realloc(mime_types_description, len + 2);
-  mime_types_description[len] = ':';
-  mime_types_description[len+1] = '\0';
-
-  g_free (mimes);
-
-  return mime_types_description;
 }

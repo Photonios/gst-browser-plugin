@@ -46,20 +46,20 @@ typedef struct _GbpPlayerPrivate GbpPlayerPrivate;
 typedef struct _GbpPlayerClass GbpPlayerClass;
 
 struct _GbpPlayer {
-  GstObject object;
+    GstObject object;
 
-  GbpPlayerPrivate *priv;
+    GbpPlayerPrivate *priv;
 };
 
 struct _GbpPlayerClass {
-  GstObjectClass object_class;
+    GstObjectClass object_class;
 
-  /* signals */
-  void (*playing)(GbpPlayer *player);
-  void (*paused)(GbpPlayer *player);
-  void (*stopped)(GbpPlayer *player);
-  void (*eos)(GbpPlayer *player);
-  void (*error)(GbpPlayer *player, GError *error, const char *debug);
+    /* signals */
+    void (*playing)(GbpPlayer *player);
+    void (*paused)(GbpPlayer *player);
+    void (*stopped)(GbpPlayer *player);
+    void (*eos)(GbpPlayer *player);
+    void (*error)(GbpPlayer *player, GError *error, const char *debug);
 };
 
 GType gbp_player_get_type(void);
@@ -69,7 +69,7 @@ void gbp_player_stop (GbpPlayer *player);
 GstClockTime gbp_player_get_duration (GbpPlayer *player);
 GstClockTime gbp_player_get_position (GbpPlayer *player);
 gboolean gbp_player_seek (GbpPlayer *player,
-    GstClockTime position, gdouble rate);
+                          GstClockTime position, gdouble rate);
 
 G_END_DECLS
 

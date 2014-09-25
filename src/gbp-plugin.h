@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2009 Alessandro Decina
- * 
+ *
  * Authors:
  *   Alessandro Decina <alessandro.d@gmail.com>
  *

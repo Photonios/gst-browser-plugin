@@ -6,3 +6,5 @@ proj/
 *.opensdf
 *.suo
 Makefile
+src/gbp-marshal.c
+src/gbp-marshal.h

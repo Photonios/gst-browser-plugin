@@ -486,7 +486,6 @@ NP_Initialize (NPNetscapeFuncs *mozilla_vtable, NPPluginFuncs *plugin_vtable)
   SetDllDirectory (library_path);
 #endif
 
-  g_type_init ();
   gst_init (NULL, NULL);
   registry = gst_registry_get_default ();
 

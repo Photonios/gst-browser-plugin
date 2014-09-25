@@ -485,9 +485,6 @@ NP_Initialize (NPNetscapeFuncs *mozilla_vtable, NPPluginFuncs *plugin_vtable)
 #endif
 
     library_path = get_library_path();
-#ifdef XP_WIN
-    SetDllDirectory (library_path);
-#endif
 
     gst_init (NULL, NULL);
     registry = gst_registry_get  ();

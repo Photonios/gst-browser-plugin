@@ -14,11 +14,12 @@ solution "gst-browser-plugin"
 		language "C++"
 		location "proj"
 		targetdir "bin"
-		targetname "gst-browser-plugin"
+		targetname "nplibgbp"
 		files { 
 			path.project("src/**.h"),
 			path.project("src/**.c"),
-			path.project("src/**.def")
+			path.project("src/**.def"),
+			path.project("src/**.rc")
 		}
 		links { 
 			"glib-2.0.lib",

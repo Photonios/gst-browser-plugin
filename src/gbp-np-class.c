@@ -760,8 +760,8 @@ playback_command_new (PlaybackCommandCode code,
   command->code = code;
   command->data = data;
   command->free_data = free_data;
-  command->cond = g_cond_new ();
   command->lock = g_mutex_new ();
+  g_cond_init(command->cond);
   command->done = FALSE;
   command->wait = FALSE;
 

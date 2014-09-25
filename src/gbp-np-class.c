@@ -886,12 +886,9 @@ do_playback_queue (NPPGbpData *data, GAsyncQueue *queue)
   PlaybackCommand *command, *flushed_command;
   gboolean exit = FALSE;
   gboolean free_data = FALSE;
-  GTimeVal timeout;
 
   while (exit == FALSE) {
-    g_get_current_time (&timeout);
-    g_time_val_add (&timeout, G_USEC_PER_SEC / 5);
-    command = g_async_queue_timed_pop (queue, &timeout);
+	command = g_async_queue_timeout_pop(queue, G_USEC_PER_SEC / 5);
     if (command == NULL)
       break;
 

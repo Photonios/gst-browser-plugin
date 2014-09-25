@@ -738,7 +738,7 @@ gbp_np_class_free ()
 #ifndef PLAYBACK_THREAD_POOL
 void gbp_np_class_start_object_playback_thread(NPPGbpData *data)
 {
-  data->playback_thread = g_thread_create (playback_thread_func,
+  data->playback_thread = g_thread_new (playback_thread_func,
       data->playback_queue, TRUE, NULL);
 }
 #endif
